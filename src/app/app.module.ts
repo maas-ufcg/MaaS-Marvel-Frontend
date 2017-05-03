@@ -8,19 +8,27 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SearchBarComponent } from './toolbar/search-bar/search-bar.component';
+import { HomeComponent } from './home/home.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { AppRoutingModule } from "app/app.routing.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    HomeComponent,
+    FavoritesComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
