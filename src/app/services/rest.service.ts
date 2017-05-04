@@ -4,12 +4,12 @@ import data from './all_heroes.json';
 @Injectable()
 export class RestService {
 
-  private heros: any[] = data;
+  private heroes: any[] = data;
 
   constructor() { }
 
   getHeros() {
-    return this.heros;
+    return this.heroes;
   }
 
 }
