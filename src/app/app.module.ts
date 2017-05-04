@@ -11,7 +11,7 @@ import { SearchBarComponent } from './toolbar/search-bar/search-bar.component';
 import { HomeComponent } from './home/home.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { AppRoutingModule } from "app/app-routing.module";
+import { AppRoutingModule } from 'app/app-routing.module';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './connect/login/login.component';
 import { AuthenticationService } from './services/authentication.service';

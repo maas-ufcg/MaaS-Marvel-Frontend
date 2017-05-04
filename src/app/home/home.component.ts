@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RestService } from "app/services/rest.service";
+import { RestService } from 'app/services/rest.service';
 
 @Component({
   selector: 'app-home',
@@ -9,18 +9,22 @@ import { RestService } from "app/services/rest.service";
 export class HomeComponent implements OnInit {
 
   heroes = [];
+  private default_resolution = '/standard_fantastic.';
 
   constructor(
     private restService: RestService
   ) { }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.heroes = this.restService.getHeros();
-    console.log(this.heroes) 
   }
 
-  favorite(hero){
+  favorite(hero) {
     hero.favorite = !hero.favorite;
+  }
+
+  getHeroImage(hero) {
+    return hero.thumbnail.path + this.default_resolution + hero.thumbnail.extension;
   }
 
 }
