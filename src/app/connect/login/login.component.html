@@ -1,0 +1,14 @@
+<form (ngSubmit)="login()">
+  <md-input-container>
+    <input mdInput placeholder="Email" [(ngModel)]="userCredentials.email" name="email" type="email">
+  </md-input-container>
+  <md-input-container>
+    <input mdInput placeholder="Password" type="password" [(ngModel)]="userCredentials.password" name="password">
+  </md-input-container>
+  <div class="error" *ngIf="error">
+    {{ error }}
+  </div>
+  <div class="button-row">
+    <button class="connect-button" type="submit" [disabled]="!userCredentials.valid()">Login</button>
+  </div>
+</form>

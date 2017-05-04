@@ -5,8 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { FavoritesComponent } from './favorites/favorites.component';
-import { MainComponent } from './main/main.component';
-import { LoginComponent } from './login/login.component';
+import { MainComponent } from "./main/main.component";
+import { ConnectComponent } from './connect/connect.component';
 import { AuthGuard } from './providers/auth-guard';
 
 const appRoutes: Routes = [
@@ -15,7 +15,7 @@ const appRoutes: Routes = [
         { path: 'home', component: HomeComponent },
         { path: '', redirectTo: '/home', pathMatch: 'full' }
     ]},
-    { path: 'login', component: LoginComponent },
+    { path: 'connect', component: ConnectComponent },
     { path: '**', component: NotFoundComponent }
 ];
 

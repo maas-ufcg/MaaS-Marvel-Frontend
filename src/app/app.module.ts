@@ -13,10 +13,13 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from 'app/app-routing.module';
 import { MainComponent } from './main/main.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './connect/login/login.component';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthGuard } from './providers/auth-guard';
-import { RestService } from './services/rest.service';
+import { RestService } from "./services/rest.service";
+import { UserService } from './services/user.service';
+import { ConnectComponent } from './connect/connect.component';
+import { RegisterComponent } from './connect/register/register.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { RestService } from './services/rest.service';
     FavoritesComponent,
     NotFoundComponent,
     MainComponent,
-    LoginComponent
+    LoginComponent,
+    ConnectComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,8 @@ import { RestService } from './services/rest.service';
   providers: [
     AuthGuard,
     AuthenticationService,
-    RestService
+    RestService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
