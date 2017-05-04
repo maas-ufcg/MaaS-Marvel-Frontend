@@ -1,3 +1,13 @@
-<p>
-  home works!
-</p>
+ <md-grid-list cols="4">
+  <md-grid-tile *ngFor="let hero of heroes">
+  <md-card class="hero-card">
+    <img md-card-image src="http://x.annihil.us/u/prod/marvel/i/mg/3/40/4bb4680432f73/standard_fantastic.jpg" />
+    <md-card-title>
+      <button md-icon-button color="accent" (click)="favorite(hero)">
+        <md-icon>{{hero.favorite ? 'favorite' : 'favorite_border'}}</md-icon>
+      </button>
+      <span>{{hero.name}}</span>
+    </md-card-title>
+  </md-card>
+  </md-grid-tile>
+ </md-grid-list>
