@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from "app/app.routing.module";
+import { RestService } from "app/services/rest.service";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { AppRoutingModule } from "app/app.routing.module";
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    RestService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
