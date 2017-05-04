@@ -11,7 +11,11 @@ import { SearchBarComponent } from './toolbar/search-bar/search-bar.component';
 import { HomeComponent } from './home/home.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { AppRoutingModule } from "app/app.routing.module";
+import { AppRoutingModule } from "app/app-routing.module";
+import { MainComponent } from './main/main.component';
+import { LoginComponent } from './login/login.component';
+import { AuthenticationService } from './services/authentication.service';
+import { AuthGuard } from './providers/auth-guard';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,9 @@ import { AppRoutingModule } from "app/app.routing.module";
     SearchBarComponent,
     HomeComponent,
     FavoritesComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    MainComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +36,10 @@ import { AppRoutingModule } from "app/app.routing.module";
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    AuthenticationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
