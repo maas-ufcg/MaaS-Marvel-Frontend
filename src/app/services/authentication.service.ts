@@ -19,20 +19,21 @@ export class AuthenticationService {
   login(userCredentials: UserCredentials) {
      return this.http.post(API_BASE_URL + "/users/authenticate", JSON.stringify(userCredentials), this.options)
                       .map((response: Response) => {
-                        console.log(response.status);
        if(response.status == 200) {
           let data = response.json()
-          this.authenticatedUser = <AuthenticatedUser> data;
-          localStorage.setItem('currentUser', JSON.stringify(this.authenticatedUser));
+          this.setAuthenticatedUser(<AuthenticatedUser> data);
           return data;
        }
     }).catch((err: any, caugth) => {
-      if(err.status == 401) {
-        throw new Error('Bad credentials.');
-      } else {
-        throw new Error('Internal server error.');
-      }
+      throw new Error(err.json().message);
     }).toPromise();
+   }
+
+   setAuthenticatedUser(user: AuthenticatedUser) {
+     if(user) {
+      this.authenticatedUser = user;
+      localStorage.setItem('currentUser', JSON.stringify(this.authenticatedUser));
+     }
    }
 
    isLoggedIn():boolean {
@@ -42,7 +43,7 @@ export class AuthenticationService {
    logout() {
      localStorage.removeItem('currentUser');
      this.authenticatedUser = null;
-     this.router.navigate(['/login']);
+     this.router.navigate(['/connect']);
    }
 
    get options() {
