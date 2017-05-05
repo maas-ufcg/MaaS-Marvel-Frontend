@@ -14,7 +14,6 @@ export class SearchBarComponent {
   ) { }
 
   search() {
-    console.log("olá?")
     this.restService.search(this.name);
   }
 

@@ -18,9 +18,5 @@ export class HomeComponent implements OnInit {
     this.heroes = this.restService.getHeros();
     console.log(this.heroes) 
   }
-
-  favorite(hero){
-    hero.favorite = !hero.favorite;
-  }
-
+  
 }
