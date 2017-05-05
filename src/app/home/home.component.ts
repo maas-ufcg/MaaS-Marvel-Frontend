@@ -8,7 +8,7 @@ import { RestService } from 'app/services/rest.service';
 })
 export class HomeComponent implements OnInit {
 
-  heroes = [];
+  heroes: Array<any>;
   private default_resolution = '/standard_fantastic.';
 
   constructor(
@@ -16,7 +16,9 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.heroes = this.restService.getHeros();
+    this.restService.getHeros().then(res => {
+      this.heroes = res;
+    });
   }
 
   favorite(hero) {
