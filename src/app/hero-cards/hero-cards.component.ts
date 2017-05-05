@@ -10,12 +10,18 @@ export class HeroCardsComponent implements OnInit {
 
   @Input() heroes: any[];
 
+  private default_resolution = '/standard_fantastic.';
+
   constructor() { }
 
   ngOnInit() { }
 
   favorite(hero){
     hero.favorite = !hero.favorite;
+  }
+ 
+  getHeroImage(hero) {
+    return hero.thumbnail.path + this.default_resolution + hero.thumbnail.extension;
   }
 
 }

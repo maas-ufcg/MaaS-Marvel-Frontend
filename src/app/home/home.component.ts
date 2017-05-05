@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RestService } from "app/services/rest.service";
+import { RestService } from 'app/services/rest.service';
 
 @Component({
   selector: 'app-home',
@@ -14,9 +14,8 @@ export class HomeComponent implements OnInit {
     private restService: RestService
   ) { }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.heroes = this.restService.getHeros();
     console.log(this.heroes) 
   }
-  
 }

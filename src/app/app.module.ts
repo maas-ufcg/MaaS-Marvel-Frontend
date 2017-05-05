@@ -11,14 +11,17 @@ import { SearchBarComponent } from './toolbar/search-bar/search-bar.component';
 import { HomeComponent } from './home/home.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { AppRoutingModule } from "app/app-routing.module";
+import { AppRoutingModule } from 'app/app-routing.module';
 import { MainComponent } from './main/main.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './connect/login/login.component';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthGuard } from './providers/auth-guard';
 import { RestService } from "./services/rest.service";
+import { UserService } from './services/user.service';
+import { ConnectComponent } from './connect/connect.component';
 import { HeroDetailsComponent } from './hero-details/hero-details.component';
 import { HeroCardsComponent } from './hero-cards/hero-cards.component';
+import { RegisterComponent } from './connect/register/register.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,8 @@ import { HeroCardsComponent } from './hero-cards/hero-cards.component';
     NotFoundComponent,
     MainComponent,
     LoginComponent,
+    ConnectComponent,
+    RegisterComponent,
     HeroDetailsComponent,
     HeroCardsComponent
   ],
@@ -44,7 +49,8 @@ import { HeroCardsComponent } from './hero-cards/hero-cards.component';
   providers: [
     AuthGuard,
     AuthenticationService,
-    RestService
+    RestService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,53 @@
+@import "../../defaults";
+
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: $black;
+
+    /deep/ md-input-container {
+        display: block;
+    }
+
+    /deep/ md-card {
+        border-radius: 0;
+        min-width: 280px;
+    }
+
+    /deep/ md-input-container {
+        margin: 1.5rem 0;
+    }
+
+    /deep/ .error {
+        display: block;
+        padding: 0.5rem;
+        text-align: center;
+        background: $red;
+        color: $white;
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    /deep/ .connect-button {
+        text-transform: uppercase;
+        font-weight: bolder;
+        border:none;
+        background: transparent;
+        font-size: 1.2rem;
+        float: right;
+    }
+
+    /deep/  .connect-button:hover {
+        color: $red;
+        cursor: pointer;
+    }
+
+    /deep/  .connect-button:disabled {
+        color: $medium-grey;
+        cursor: not-allowed;
+    }
+
+    
+}

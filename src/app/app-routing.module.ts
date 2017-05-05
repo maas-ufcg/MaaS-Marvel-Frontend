@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { HeroDetailsComponent } from "./hero-details/hero-details.component";
 import { MainComponent } from "./main/main.component";
-import { LoginComponent } from './login/login.component';
+import { ConnectComponent } from './connect/connect.component';
 import { AuthGuard } from './providers/auth-guard';
 
 const appRoutes: Routes = [
@@ -17,7 +17,7 @@ const appRoutes: Routes = [
         { path: 'home', component: HomeComponent },
         { path: '', redirectTo: '/home', pathMatch: 'full' }
     ]},
-    { path: 'login', component: LoginComponent },
+    { path: 'connect', component: ConnectComponent },
     { path: '**', component: NotFoundComponent }
 ];
 
