@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthGuard } from './providers/auth-guard';
 import { RestService } from "./services/rest.service";
+import { HeroDetailsComponent } from './hero-details/hero-details.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { RestService } from "./services/rest.service";
     FavoritesComponent,
     NotFoundComponent,
     MainComponent,
-    LoginComponent
+    LoginComponent,
+    HeroDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RestService } from "app/services/rest.service";
 
 @Component({
   selector: 'app-search-bar',
@@ -8,8 +9,13 @@ import { Component } from '@angular/core';
 export class SearchBarComponent {
   name = '';
 
-  constructor() { }
+  constructor(
+    private restService: RestService
+  ) { }
 
-  search() {}
+  search() {
+    console.log("olá?")
+    this.restService.search(this.name);
+  }
 
 }
