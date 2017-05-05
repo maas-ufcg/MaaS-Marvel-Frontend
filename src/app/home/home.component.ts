@@ -7,9 +7,7 @@ import { RestService } from 'app/services/rest.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
   heroes: Array<any>;
-  private default_resolution = '/standard_fantastic.';
 
   constructor(
     private restService: RestService
@@ -20,13 +18,4 @@ export class HomeComponent implements OnInit {
       this.heroes = res;
     });
   }
-
-  favorite(hero) {
-    hero.favorite = !hero.favorite;
-  }
-
-  getHeroImage(hero) {
-    return hero.thumbnail.path + this.default_resolution + hero.thumbnail.extension;
-  }
-
 }

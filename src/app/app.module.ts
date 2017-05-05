@@ -19,6 +19,8 @@ import { AuthGuard } from './providers/auth-guard';
 import { RestService } from "./services/rest.service";
 import { UserService } from './services/user.service';
 import { ConnectComponent } from './connect/connect.component';
+import { HeroDetailsComponent } from './hero-details/hero-details.component';
+import { HeroCardsComponent } from './hero-cards/hero-cards.component';
 import { RegisterComponent } from './connect/register/register.component';
 
 @NgModule({
@@ -32,7 +34,9 @@ import { RegisterComponent } from './connect/register/register.component';
     MainComponent,
     LoginComponent,
     ConnectComponent,
-    RegisterComponent
+    RegisterComponent,
+    HeroDetailsComponent,
+    HeroCardsComponent
   ],
   imports: [
     BrowserModule,
