@@ -22,7 +22,6 @@ export class UserService {
 
        return response.json();
     }).catch((err: any, caugth) => {
-      console.log(err);
          throw new Error(err.json().message);
     }).toPromise();
   }
