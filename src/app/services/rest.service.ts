@@ -14,8 +14,8 @@ export class RestService {
     private http: Http, private authenticationService: AuthenticationService
   ) { }
 
-  getHeros(): Promise<any[]> {
-    return this.http.get(API_BASE_URL + "/heros", this.options)
+  getHeroes(): Promise<any[]> {
+    return this.http.get(API_BASE_URL + "/heroes", this.options)
     .map((res) => {
       if(res.status == 200) {
         this.heroes = <any[]> res.json();

@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.restService.getHeros().then(res => {
+    this.restService.getHeroes().then(res => {
       this.heroes = res;
     });
   }
