@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from "rxjs/Subscription";
 import { ActivatedRoute, Router } from "@angular/router";
 
@@ -9,7 +9,7 @@ import { RestService } from "app/services/rest.service";
   templateUrl: './hero-details.component.html',
   styleUrls: ['./hero-details.component.scss']
 })
-export class HeroDetailsComponent implements OnInit {
+export class HeroDetailsComponent implements OnInit, OnDestroy {
   
   hero;
   id;
@@ -26,6 +26,7 @@ export class HeroDetailsComponent implements OnInit {
       (params: any) => {
         this.id = params['id'];
         this.hero = this.restService.getHero(this.id);
+        console.log(this.hero)
         if (this.hero == null) {
           this.router.navigate(['notFound'])
         }

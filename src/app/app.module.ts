@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SearchBarComponent } from './toolbar/search-bar/search-bar.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent, SearchNotFoundDialog } from './home/home.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from 'app/app-routing.module';
@@ -36,7 +36,8 @@ import { RegisterComponent } from './connect/register/register.component';
     ConnectComponent,
     RegisterComponent,
     HeroDetailsComponent,
-    HeroCardsComponent
+    HeroCardsComponent,
+    SearchNotFoundDialog
   ],
   imports: [
     BrowserModule,
@@ -51,6 +52,9 @@ import { RegisterComponent } from './connect/register/register.component';
     AuthenticationService,
     RestService,
     UserService
+  ],
+  entryComponents: [
+    SearchNotFoundDialog
   ],
   bootstrap: [AppComponent]
 })

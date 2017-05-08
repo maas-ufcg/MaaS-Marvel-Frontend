@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import data from './all_heroes.json';
 
+import { API_BASE_URL } from '../../config/config';
+
 @Injectable()
 export class RestService {
 
-  private heroes: any[] = data;
+  public heroes: any[] = data;
 
   constructor() { }
 
@@ -32,10 +34,7 @@ export class RestService {
   }
 
   search(name:string) {
-/*    this.heroes = [
-      {id: 5, name: 'Hero 05', favorite: true},
-      {id: 6, name: 'Hero 06', favorite: false},
-    ]*/
+    return [];
   }
 
 }
