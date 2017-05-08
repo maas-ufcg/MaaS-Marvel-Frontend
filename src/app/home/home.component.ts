@@ -11,8 +11,7 @@ import { RestService } from 'app/services/rest.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-
-  heroes = [];
+  heroes: Array<any>;
   name: string;
   subscription: Subscription;
 
@@ -47,7 +46,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
     } else {
       console.log('exibindo todos')
-      this.heroes = this.restService.getHeros();
+      this.restService.getHeroes().then(res => {
+      this.heroes = res;
+    })
     }
   }
 

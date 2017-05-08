@@ -1,19 +1,37 @@
 import { Injectable } from '@angular/core';
-import data from './all_heroes.json';
+import { Http, Response } from '@angular/http';
 
+import { AuthenticationService } from './authentication.service';
 import { API_BASE_URL } from '../../config/config';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
+
 
 @Injectable()
 export class RestService {
+  private heroes : any[];
+  
+  constructor(
+    private http: Http, private authenticationService: AuthenticationService
+  ) { }
 
-  public heroes: any[] = data;
-
-  constructor() { }
-
-  getHeros() {
-    return this.heroes;
+  getHeroes(): Promise<any[]> {
+    return this.http.get(API_BASE_URL + "/heroes", this.options)
+    .map((res) => {
+      if(res.status == 200) {
+        this.heroes = <any[]> res.json();
+        return this.heroes;
+      }
+    
+    }).catch((err: any, caugth) => {
+      throw new Error(err.json().message);
+    }).toPromise();
   }
 
+  get options() {
+    return this.authenticationService.options;
+  }
+  
   getFavorites(){
     let favorites = []
     for (var index = 0; index < this.heroes.length; index++) {
