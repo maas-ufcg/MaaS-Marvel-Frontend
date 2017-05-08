@@ -53,22 +53,11 @@ export class RestService {
   }
 
   getFavorites() {
-    let favorites = []
-    for (var index = 0; index < this.heroes.length; index++) {
-      if(this.heroes[index].favorite) {
-        favorites.push(this.heroes[index]);
-      }
-    }
-    return favorites;
+    return this.heroes.filter(hero => hero.favorite);
   }
 
   getHero(id:number) {
-    for (var index = 0; index < this.heroes.length; index++) {
-      if(this.heroes[index].id == id) {
-        return this.heroes[index];
-      }
-    }
-    return null;
+    return this.heroes.filter(hero => hero.id === id);
   }
 
   search(name:string) {
