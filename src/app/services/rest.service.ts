@@ -6,6 +6,7 @@ import { API_BASE_URL } from '../../config/config';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 
+
 @Injectable()
 export class RestService {
   private heroes : any[];
@@ -51,10 +52,7 @@ export class RestService {
   }
 
   search(name:string) {
-/*    this.heroes = [
-      {id: 5, name: 'Hero 05', favorite: true},
-      {id: 6, name: 'Hero 06', favorite: false},
-    ]*/
+    return [];
   }
 
 }

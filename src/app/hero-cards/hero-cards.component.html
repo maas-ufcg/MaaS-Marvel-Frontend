@@ -1,13 +1,15 @@
- <md-grid-list cols="4">
+<md-grid-list cols="4">
   <md-grid-tile *ngFor="let hero of heroes">
-  <md-card class="hero-card">
-    <img md-card-image [src]="getHeroImage(hero)" />
-    <md-card-title>
-      <button md-icon-button color="accent" (click)="favorite(hero)">
-        <md-icon>{{hero.favorite ? 'favorite' : 'favorite_border'}}</md-icon>
-      </button>
-      <span>{{hero.name}}</span>
-    </md-card-title>
-  </md-card>
+    <md-card class="hero-card">
+      <a class="collection-item" [routerLink]="['/hero', hero.id]">
+        <img md-card-image [src]="getHeroImage(hero)" />
+      </a>
+      <md-card-title>
+        <button md-icon-button color="accent" (click)="favorite(hero)">
+          <md-icon>{{hero.favorite ? 'favorite' : 'favorite_border'}}</md-icon>
+        </button>
+        <span>{{hero.name}}</span>
+      </md-card-title>
+    </md-card>
   </md-grid-tile>
- </md-grid-list>
+</md-grid-list>
