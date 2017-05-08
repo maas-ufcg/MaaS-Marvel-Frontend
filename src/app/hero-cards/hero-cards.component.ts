@@ -22,13 +22,9 @@ export class HeroCardsComponent implements OnInit {
     hero.favorite = !hero.favorite;
     
     if(hero.favorite) {
-      this.service.favorite(hero.id.toString()).then(res => {
-        console.log(res);
-      });
+      this.service.favorite(hero.id.toString()).then(() => {});
     } else {
-      this.service.unfavorite(hero.id.toString()).then(res => {
-        console.log(res); 
-      }); 
+      this.service.unfavorite(hero.id.toString()).then(() => {}); 
     }
   }
  

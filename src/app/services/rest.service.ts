@@ -9,7 +9,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class RestService {
   private heroes : any[];
-  
+  private favorites = [];
+
   constructor(
     private http: Http, private authenticationService: AuthenticationService
   ) { }
@@ -19,18 +20,18 @@ export class RestService {
     .map((res) => {
       if(res.status == 200) {
         this.heroes = <any[]> res.json();
+        this.loadFavorites();
         return this.heroes;
-      }
-    
+      } 
     }).catch((err: any, caugth) => {
       throw new Error(err.json().message);
     }).toPromise();
   }
 
-  favorite(heroId:number) {
+  favorite(heroId:string) {
     return this.http.post(API_BASE_URL + "/heroes/favorite/" + heroId, {}, this.options)
     .map(res => {
-      return res.status; 
+      return res.status;
 
     }).catch((err: any, caugth) => {
       throw new Error(err.json().message);
@@ -38,11 +39,12 @@ export class RestService {
   }
 
 
-  unfavorite(heroId:number) {
+  unfavorite(heroId:string) {
     return this.http.delete(API_BASE_URL + "/heroes/favorite/" + heroId, this.options)
     .map(res => {
-      return res.status; 
-
+      if(res.status === 200) {
+        this.favorites.splice(this.favorites.indexOf(heroId), 1);
+      }
     }).catch((err: any, caugth) => {
       throw new Error(err.json().message);
     }).toPromise();
@@ -50,6 +52,20 @@ export class RestService {
 
   get options() {
     return this.authenticationService.options;
+  }
+
+  loadFavorites() {
+    return this.http.get(API_BASE_URL + "/heroes/favorite", this.options) 
+    .map(res => {
+      if(res.status === 200) {
+       this.favorites = res.json().favorites;
+       this.heroes.map(hero => this.favorites.indexOf(hero.id) > -1 ? hero.favorite = true: hero.favorite = false);
+      }
+      
+    }).catch((err: any, caugth) => {
+      throw new Error(err.json().message);
+    }).toPromise();
+
   }
 
   getFavorites() {
