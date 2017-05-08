@@ -12,12 +12,24 @@ export class HeroCardsComponent implements OnInit {
 
   private default_resolution = '/standard_fantastic.';
 
-  constructor() { }
+  constructor(
+    private service: RestService
+  ) { }
 
   ngOnInit() { }
 
   favorite(hero){
     hero.favorite = !hero.favorite;
+    
+    if(hero.favorite) {
+      this.service.favorite(hero.id).then(res => {
+        console.log(res);
+      });
+    } else {
+      this.service.unfavorite(hero.id).then(res => {
+        console.log(res); 
+      }); 
+    }
   }
  
   getHeroImage(hero) {
