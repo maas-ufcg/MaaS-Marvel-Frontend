@@ -37,15 +37,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   exibition() {
     if (this.name && this.name != '') {
-      console.log('exibindo: ' + this.name)
-      let result = this.restService.search(this.name);
-      if (result.length != 0) {
-        this.heroes = result;
-      } else {
-        this.openDialog();
-      }
+      let res = this.restService.search(this.name);
+        if (res.length != 0) {
+          this.heroes = res;
+        } else {
+          this.openDialog();
+        }
     } else {
-      console.log('exibindo todos')
       this.restService.getHeroes().then(res => {
         this.heroes = res;
       });

@@ -27,6 +27,7 @@ export class HeroDetailsComponent implements OnInit, OnDestroy {
         this.id = params['id'];
         this.restService.getHero(this.id).then(res => {
           this.hero = res;
+          console.log(this.hero)
           if (this.hero == null) {
             this.router.navigate(['notFound'])
           }

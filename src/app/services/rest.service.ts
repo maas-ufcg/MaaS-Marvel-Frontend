@@ -9,53 +9,91 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class RestService {
-  private heroes : any[];
-  
+  private heroes = [];
+  private favorites = [];
+
   constructor(
     private http: Http, private authenticationService: AuthenticationService
   ) { }
 
+
   getHeroes(): Promise<any[]> {
     return this.http.get(API_BASE_URL + "/heroes", this.options)
-    .map((res) => {
-      if(res.status == 200) {
-        this.heroes = <any[]> res.json();
-        return this.heroes;
-      }
-    
-    }).catch((err: any, caugth) => {
-      throw new Error(err.json().message);
-    }).toPromise();
+      .map((res) => {
+        if (res.status == 200) {
+          this.heroes = <any[]>res.json();
+          this.loadFavorites();
+          return this.heroes;
+        }
+      }).catch((err: any, caugth) => {
+        throw new Error(err.json().message);
+      }).toPromise();
+  }
+
+  favorite(heroId: string) {
+    return this.http.post(API_BASE_URL + "/heroes/favorite/" + heroId, {}, this.options)
+      .map(res => {
+        return res.status;
+
+      }).catch((err: any, caugth) => {
+        throw new Error(err.json().message);
+      }).toPromise();
+  }
+
+
+  unfavorite(heroId: string) {
+    return this.http.delete(API_BASE_URL + "/heroes/favorite/" + heroId, this.options)
+      .map(res => {
+        if (res.status === 200) {
+          this.favorites.splice(this.favorites.indexOf(heroId), 1);
+        }
+      }).catch((err: any, caugth) => {
+        throw new Error(err.json().message);
+      }).toPromise();
+  }
+
+  loadFavorites() {
+    return this.http.get(API_BASE_URL + "/heroes/favorite", this.options)
+      .map(res => {
+        if (res.status === 200) {
+          this.favorites = res.json().favorites;
+          this.heroes.map(hero => this.favorites.indexOf(hero.id) > -1 ? hero.favorite = true : hero.favorite = false);
+        }
+
+      }).catch((err: any, caugth) => {
+        console.log(err);
+        throw new Error(err);
+      }).toPromise();
+
   }
 
   get options() {
     return this.authenticationService.options;
   }
-  
-  getHero(id:number): Promise<any[]> {
+
+  getHero(id: number): Promise<any[]> {
     return this.http.get(API_BASE_URL + "/heroes/" + id, this.options)
-    .map((res) => {
-      if(res.status == 200) {
-        let hero = <any> res.json
-        return hero;
-      }
-    }).catch((err:any, caught) => {
-      throw new Error(err.json().message)
-    }).toPromise();
+      .map((res) => {
+        if (res.status == 200) {
+          let hero = <any> res.json().hero;
+          return hero;
+        }
+      }).catch((err: any, caught) => {
+        throw new Error(err.json().message)
+      }).toPromise();
   }
+  
 
   getFavorites() {
-    let favorites = []
-    for (var index = 0; index < this.heroes.length; index++) {
-      if(this.heroes[index].favorite) {
-        favorites.push(this.heroes[index]);
-      }
-    }
-    return favorites;
+    return this.heroes.filter(hero => hero.favorite);
   }
 
+  /*  getHero(id: number) {
+      return this.heroes.filter(hero => hero.id === id);
+    }*/
 
-  search(name:string) {
+
+  search(name: string) {
     return [];
   }
 
