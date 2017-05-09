@@ -6,6 +6,7 @@ import { API_BASE_URL } from '../../config/config';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 
+
 @Injectable()
 export class RestService {
   private heroes : any[];
@@ -15,7 +16,8 @@ export class RestService {
     private http: Http, private authenticationService: AuthenticationService
   ) { }
 
-  getHeros(): Promise<any[]> {
+
+  getHeroes(): Promise<any[]> {
     return this.http.get(API_BASE_URL + "/heroes", this.options)
     .map((res) => {
       if(res.status == 200) {
@@ -77,7 +79,7 @@ export class RestService {
   }
 
   search(name:string) {
-    
+    return [];
   }
 
 }

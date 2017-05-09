@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from "@angular/router";
 import { RestService } from "app/services/rest.service";
 
 @Component({
@@ -10,11 +11,13 @@ export class SearchBarComponent {
   name = '';
 
   constructor(
-    private restService: RestService
+    private restService: RestService,
+    private router: Router
   ) { }
 
   search() {
-    this.restService.search(this.name);
+    this.router.navigate(['/home'], {queryParams: {'name': this.name}});
+    console.log("buscando " + this.name)
   }
 
 }
