@@ -32,7 +32,19 @@ export class RestService {
     return this.authenticationService.options;
   }
   
-  getFavorites(){
+  getHero(id:number): Promise<any[]> {
+    return this.http.get(API_BASE_URL + "/heroes/" + id, this.options)
+    .map((res) => {
+      if(res.status == 200) {
+        let hero = <any> res.json
+        return hero;
+      }
+    }).catch((err:any, caught) => {
+      throw new Error(err.json().message)
+    }).toPromise();
+  }
+
+  getFavorites() {
     let favorites = []
     for (var index = 0; index < this.heroes.length; index++) {
       if(this.heroes[index].favorite) {
@@ -42,14 +54,6 @@ export class RestService {
     return favorites;
   }
 
-  getHero(id:number) {
-    for (var index = 0; index < this.heroes.length; index++) {
-      if(this.heroes[index].id == id) {
-        return this.heroes[index];
-      }
-    }
-    return null;
-  }
 
   search(name:string) {
     return [];

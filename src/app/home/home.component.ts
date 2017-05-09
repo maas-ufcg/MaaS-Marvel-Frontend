@@ -47,8 +47,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     } else {
       console.log('exibindo todos')
       this.restService.getHeroes().then(res => {
-      this.heroes = res;
-    })
+        this.heroes = res;
+      });
     }
   }
 
@@ -61,4 +61,4 @@ export class HomeComponent implements OnInit, OnDestroy {
   selector: 'search-not-found-dialog',
   template: `<h4>Hero Not Found...</h4>`,
 })
-export class SearchNotFoundDialog {}
+export class SearchNotFoundDialog { }

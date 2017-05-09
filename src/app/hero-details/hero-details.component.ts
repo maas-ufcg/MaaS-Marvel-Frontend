@@ -10,7 +10,7 @@ import { RestService } from "app/services/rest.service";
   styleUrls: ['./hero-details.component.scss']
 })
 export class HeroDetailsComponent implements OnInit, OnDestroy {
-  
+
   hero;
   id;
   subscritpion: Subscription;
@@ -25,11 +25,12 @@ export class HeroDetailsComponent implements OnInit, OnDestroy {
     this.subscritpion = this.route.params.subscribe(
       (params: any) => {
         this.id = params['id'];
-        this.hero = this.restService.getHero(this.id);
-        console.log(this.hero)
-        if (this.hero == null) {
-          this.router.navigate(['notFound'])
-        }
+        this.restService.getHero(this.id).then(res => {
+          this.hero = res;
+          if (this.hero == null) {
+            this.router.navigate(['notFound'])
+          }
+        })
       }
     );
   }
