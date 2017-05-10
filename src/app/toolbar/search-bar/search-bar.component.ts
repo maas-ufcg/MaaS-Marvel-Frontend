@@ -17,7 +17,6 @@ export class SearchBarComponent {
 
   search() {
     this.router.navigate(['/home'], {queryParams: {'name': this.name}});
-    console.log("buscando " + this.name)
   }
 
 }

@@ -37,12 +37,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   exibition() {
     if (this.name && this.name != '') {
-      let res = this.restService.search(this.name);
+      this.restService.search(this.name).then(res => {
         if (res.length != 0) {
           this.heroes = res;
         } else {
           this.openDialog();
         }
+      });
     } else {
       this.restService.getHeroes().then(res => {
         this.heroes = res;

@@ -71,7 +71,7 @@ export class RestService {
     return this.authenticationService.options;
   }
 
-  getHero(id: number): Promise<any[]> {
+  getHero(id: number): Promise<any> {
     return this.http.get(API_BASE_URL + "/heroes/" + id, this.options)
       .map((res) => {
         if (res.status == 200) {
@@ -88,13 +88,12 @@ export class RestService {
     return this.heroes.filter(hero => hero.favorite);
   }
 
-  /*  getHero(id: number) {
-      return this.heroes.filter(hero => hero.id === id);
-    }*/
-
-
-  search(name: string) {
-    return [];
-  }
-
+  search(name:string): Promise<any[]> {
+    return this.http.get(API_BASE_URL + "/heroes/search/params?name="+name, this.options)
+      .map((res) => {
+        return res.json().result;
+      }).catch((err: any, caught) => {
+        throw new Error(err.json().message)
+      }).toPromise();
+  } 
 }
