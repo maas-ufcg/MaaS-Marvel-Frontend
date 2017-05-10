@@ -22,7 +22,7 @@ export class RestService {
       .map((res) => {
         if (res.status == 200) {
           this.heroes = <any[]>res.json();
-          this.loadFavorites();
+          this.getFavorites();
           return this.heroes;
         }
       }).catch((err: any, caugth) => {
@@ -31,10 +31,10 @@ export class RestService {
   }
 
   favorite(heroId: string) {
+    console.log("favorite")
     return this.http.post(API_BASE_URL + "/heroes/favorite/" + heroId, {}, this.options)
       .map(res => {
-        return res.status;
-
+        //this.loadFavorites();
       }).catch((err: any, caugth) => {
         throw new Error(err.json().message);
       }).toPromise();
@@ -42,29 +42,37 @@ export class RestService {
 
 
   unfavorite(heroId: string) {
+    console.log("unfavorite");
     return this.http.delete(API_BASE_URL + "/heroes/favorite/" + heroId, this.options)
       .map(res => {
         if (res.status === 200) {
-          this.favorites.splice(this.favorites.indexOf(heroId), 1);
+          //this.loadFavorites();
         }
       }).catch((err: any, caugth) => {
         throw new Error(err.json().message);
       }).toPromise();
   }
 
-  loadFavorites() {
+  getFavorites(): Promise<any[]> {
     return this.http.get(API_BASE_URL + "/heroes/favorite", this.options)
       .map(res => {
         if (res.status === 200) {
-          this.favorites = res.json().favorites;
-          this.heroes.map(hero => this.favorites.indexOf(hero.id) > -1 ? hero.favorite = true : hero.favorite = false);
+          this.favorites = [];
+          let favoriteIds = res.json().favorites;
+          //this.favorites = res.json().favorites;
+          favoriteIds.forEach(id => {
+            this.getHero(id).then(hero => {
+              hero.favorite = true;
+              this.favorites.push(hero);
+            });
+          });
+          return this.favorites;
         }
 
       }).catch((err: any, caugth) => {
         console.log(err);
         throw new Error(err);
       }).toPromise();
-
   }
 
   get options() {
@@ -75,25 +83,20 @@ export class RestService {
     return this.http.get(API_BASE_URL + "/heroes/" + id, this.options)
       .map((res) => {
         if (res.status == 200) {
-          let hero = <any> res.json().hero;
+          let hero = <any>res.json().hero;
           return hero;
         }
       }).catch((err: any, caught) => {
         throw new Error(err.json().message)
       }).toPromise();
   }
-  
 
-  getFavorites() {
-    return this.heroes.filter(hero => hero.favorite);
-  }
-
-  search(name:string): Promise<any[]> {
-    return this.http.get(API_BASE_URL + "/heroes/search/params?name="+name, this.options)
+  search(name: string): Promise<any[]> {
+    return this.http.get(API_BASE_URL + "/heroes/search/params?name=" + name, this.options)
       .map((res) => {
         return res.json().result;
       }).catch((err: any, caught) => {
         throw new Error(err.json().message)
       }).toPromise();
-  } 
+  }
 }

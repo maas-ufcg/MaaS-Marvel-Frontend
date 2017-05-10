@@ -15,7 +15,10 @@ export class FavoritesComponent implements OnInit {
   ) { }
 
   ngOnInit() { 
-    this.favoriteHeroes = this.restService.getFavorites();
+    this.restService.getFavorites().then(favorites => {
+      this.favoriteHeroes = favorites;
+    })
+
   }
 
 }
