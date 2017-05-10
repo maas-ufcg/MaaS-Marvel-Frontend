@@ -22,6 +22,7 @@ import { ConnectComponent } from './connect/connect.component';
 import { HeroDetailsComponent } from './hero-details/hero-details.component';
 import { HeroCardsComponent } from './hero-cards/hero-cards.component';
 import { RegisterComponent } from './connect/register/register.component';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { RegisterComponent } from './connect/register/register.component';
     RegisterComponent,
     HeroDetailsComponent,
     HeroCardsComponent,
-    SearchNotFoundDialog
+    SearchNotFoundDialog,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

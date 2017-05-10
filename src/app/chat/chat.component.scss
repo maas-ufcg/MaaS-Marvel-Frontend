@@ -1,0 +1,65 @@
+@import "../../defaults";
+
+.chat-box {
+    width: 100%;
+    background: white;
+    height: calc(100vh - 64px);
+}
+
+.message {
+    background: $red;
+    color: white;
+    padding: 10px;
+    max-width: 40%;
+    width: auto;
+    clear: both;
+    margin: 0.2em;
+}
+
+.notification {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.8rem;
+    text-align: center;
+    float: left;
+    clear: both;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.sender {
+    font-size: 0.6rem;
+}
+
+.message-box {
+    float: bottom;
+    width: 100%;
+    clear: both;
+    
+}
+
+.messages {
+    height: calc(100vh - 150px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.message-box-textarea {
+    width: calc(100% - 80px);
+}
+
+.message-box-textarea textarea {
+     resize: vertical;
+}
+
+.send-button {
+    width: 60px;
+    border: none;
+    background: transparent;
+}

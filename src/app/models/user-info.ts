@@ -1,7 +1,10 @@
+import { Name } from './name';
+
 export class UserInfo {
     _id: string;
     name: Name;
     email: string;
+    password: string;
 
     constructor() {
         this.name = new Name();
@@ -10,9 +13,4 @@ export class UserInfo {
     valid() {
         return true; // implement validation
     }
-}
-
-class Name {
-    firstName: string; 
-    lastName: string;
 }

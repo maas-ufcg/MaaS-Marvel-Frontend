@@ -1,0 +1,23 @@
+<div class="chat-box">
+  <div class="messages" #messagesContainer>
+    <div *ngFor="let message of messages" [class]="getClass(message)">
+      <div *ngIf="message.type === 'message'">
+        <div class="sender">
+          {{ getName(message) }}:
+        </div>
+        {{message.message}}
+      </div>
+      <div *ngIf="message.type === 'notification'">
+        {{ getName(message) + ' ' + message.message }}
+      </div>
+    </div>
+  </div>
+  <div class="message-box">
+    <md-input-container class="message-box-textarea">
+      <textarea mdInput placeholder="Say something cool..." [(ngModel)]="message.message" name="message" type="text"></textarea>
+    </md-input-container>
+    <button (click)="sendMessage()" class="send-button">
+      <md-icon>send</md-icon>
+    </button>
+  </div>
+</div>
