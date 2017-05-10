@@ -1,0 +1,12 @@
+.tile {
+    width: 50%;
+    float: left;
+}
+
+@media screen and (max-width: 728px) {
+    .tile {
+        width: 100%;
+        display: block;
+    }
+}
+

@@ -13,31 +13,33 @@ export class HeroDetailsComponent implements OnInit, OnDestroy {
 
   hero;
   id;
-  subscritpion: Subscription;
+  subscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
     private restService: RestService,
     private router: Router
-  ) { }
+  ) { 
+    this.hero = {};
+  }
 
   ngOnInit() {
-    this.subscritpion = this.route.params.subscribe(
+    this.subscription = this.route.params.subscribe(
       (params: any) => {
         this.id = params['id'];
         this.restService.getHero(this.id).then(res => {
-          this.hero = res;
-          console.log(this.hero)
-          if (this.hero == null) {
+          if (!res) {
             this.router.navigate(['notFound'])
           }
+          
+          this.hero = res;
         })
       }
     );
   }
 
   ngOnDestroy() {
-    this.subscritpion.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
 }
