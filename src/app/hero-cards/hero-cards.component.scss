@@ -1,5 +1,21 @@
+@import "../../defaults";
+
 .hero-card {
   width: 18em;
   text-align: left;
-  background-color: whitesmoke
+}
+
+a {
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: $red;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
+.images-only-toggler {
+  color: $white;
+  margin: 5px;
+  text-transform: uppercase;
+  font-weight: bolder;
 }

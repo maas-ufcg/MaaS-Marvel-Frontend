@@ -31,24 +31,16 @@ export class RestService {
   }
 
   favorite(heroId: string) {
-    console.log("favorite")
     return this.http.post(API_BASE_URL + "/heroes/favorite/" + heroId, {}, this.options)
-      .map(res => {
-        //this.loadFavorites();
-      }).catch((err: any, caugth) => {
+      .catch((err: any, caugth) => {
         throw new Error(err.json().message);
       }).toPromise();
   }
 
 
   unfavorite(heroId: string) {
-    console.log("unfavorite");
     return this.http.delete(API_BASE_URL + "/heroes/favorite/" + heroId, this.options)
-      .map(res => {
-        if (res.status === 200) {
-          //this.loadFavorites();
-        }
-      }).catch((err: any, caugth) => {
+      .catch((err: any, caugth) => {
         throw new Error(err.json().message);
       }).toPromise();
   }
@@ -59,7 +51,6 @@ export class RestService {
         if (res.status === 200) {
           this.favorites = [];
           let favoriteIds = res.json().favorites;
-          //this.favorites = res.json().favorites;
           favoriteIds.forEach(id => {
             this.getHero(id).then(hero => {
               hero.favorite = true;
@@ -70,8 +61,7 @@ export class RestService {
         }
 
       }).catch((err: any, caugth) => {
-        console.log(err);
-        throw new Error(err);
+        throw new Error(err.json().message);
       }).toPromise();
   }
 

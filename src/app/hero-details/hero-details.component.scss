@@ -1,12 +1,32 @@
-.tile {
-    width: 50%;
-    float: left;
-}
+@import "../../defaults";
 
-@media screen and (max-width: 728px) {
+.container {
+    background: $dark-grey;
+    display: flex;
+    flex-direction: row;
+
     .tile {
-        width: 100%;
-        display: block;
+        width: 50%;
+    }
+    
+    .details-card {
+        text-align: left;
+    }
+
+    .details-text {
+        text-align: justify;
+        font-size: 16px;
+    }
+
+
+    @media screen and (max-width: 728px) {
+        .tile {
+            width: 100%;
+        }
+
+        flex-direction: column;
     }
 }
+
+
 
