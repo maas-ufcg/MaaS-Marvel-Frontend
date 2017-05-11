@@ -5,7 +5,9 @@
         <div class="sender">
           {{ getName(message) }}:
         </div>
-        {{message.message}}
+        <div class="message-body">
+          {{message.message}}
+        </div>
       </div>
       <div *ngIf="message.type === 'notification'">
         {{ getName(message) + ' ' + message.message }}

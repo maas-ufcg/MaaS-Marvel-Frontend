@@ -1,9 +1,10 @@
 @import "../../defaults";
 
 .chat-box {
-    width: 100%;
-    background: white;
+    width: calc(100%-40px);
     height: calc(100vh - 64px);
+    padding: 20px;
+    background: $white;
 }
 
 .message {
@@ -46,7 +47,7 @@
 
 .messages {
     height: calc(100vh - 150px);
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 

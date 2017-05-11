@@ -1,5 +1,24 @@
 @import "../../defaults.scss";
 
-#title {
-  color: $red;
+.logo {
+  width: 160px;
+  position: absolute;
+  top: 0;
+
+}
+
+md-toolbar {
+  background: $black;
+  color: $white;
+  overflow: hidden;
+
+  button {
+    color: $white;
+    text-transform: uppercase;
+    font-weight: bolder;
+  }
+
+  .links {
+    margin-left: 180px;
+  }
 }

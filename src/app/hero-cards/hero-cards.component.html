@@ -1,4 +1,7 @@
 <md-grid-list cols="4">
+  <md-slide-toggle class="images-only-toggler" [(ngModel)]="imagesOnly">
+        Images only
+  </md-slide-toggle>
   <md-grid-tile *ngFor="let hero of heroes">
     <md-card class="hero-card">
       <!--<img md-card-image src="http://x.annihil.us/u/prod/marvel/i/mg/3/40/4bb4680432f73/standard_fantastic.jpg" />-->

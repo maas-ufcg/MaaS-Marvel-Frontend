@@ -19,7 +19,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     private restService: RestService,
     private route: ActivatedRoute,
     public dialog: MdDialog
-  ) { }
+  ) {
+    this.heroes = [];
+   }
 
   ngOnInit() {
     this.subscription = this.route.queryParams.subscribe(
