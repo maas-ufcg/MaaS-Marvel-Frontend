@@ -1,7 +1,12 @@
 <div class="container">
    <div class="tile">
-      <md-card>
-        hero info
+      <md-card class="details-card">
+        <img md-card-image [src]="getHeroImage()"/>
+        <md-card-content>
+          <p class="details-text"><strong>ID:</strong> {{hero.id}}</p>
+          <p class="details-text"><strong>Name:</strong> {{hero.name}}</p>
+          <p class="details-text"><strong>Description:</strong> {{hero.description}}</p>
+        </md-card-content>
       </md-card>
    </div>
    <div class="tile">

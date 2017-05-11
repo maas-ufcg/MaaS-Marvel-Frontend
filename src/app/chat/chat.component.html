@@ -14,7 +14,7 @@
   </div>
   <div class="message-box">
     <md-input-container class="message-box-textarea">
-      <textarea mdInput placeholder="Say something cool..." [(ngModel)]="message.message" name="message" type="text"></textarea>
+      <textarea mdInput placeholder="Say something cool..." [(ngModel)]="message.message" name="message" type="text" (keyup.enter)="sendMessage()"></textarea>
     </md-input-container>
     <button (click)="sendMessage()" class="send-button">
       <md-icon>send</md-icon>
