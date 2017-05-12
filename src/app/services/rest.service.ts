@@ -10,7 +10,6 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class RestService {
   private heroes = [];
-  private favorites = [];
 
   constructor(
     private http: Http, private authenticationService: AuthenticationService
@@ -49,20 +48,28 @@ export class RestService {
     return this.http.get(API_BASE_URL + "/heroes/favorite", this.options)
       .map(res => {
         if (res.status === 200) {
-          this.favorites = [];
           let favoriteIds = res.json().favorites;
+          
           favoriteIds.forEach(id => {
-            this.getHero(id).then(hero => {
-              hero.favorite = true;
-              this.favorites.push(hero);
+            let hero = this.heroes.find((hero) => {
+              return hero.id === id;
             });
+            
+            hero.favorite = true;
           });
+          
           return this.favorites;
         }
 
       }).catch((err: any, caugth) => {
         throw new Error(err.json().message);
       }).toPromise();
+  }
+
+  get favorites() {
+    return this.heroes.filter((hero) => {
+      return hero.favorite;
+    });
   }
 
   get options() {
