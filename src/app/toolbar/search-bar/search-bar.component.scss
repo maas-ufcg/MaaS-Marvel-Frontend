@@ -1,3 +1,13 @@
+@import "../../../defaults.scss";
+
 #title {
   font-weight: bold;
+}
+
+input {
+  border: none;
+  padding: 10px;
+  text-transform: uppercase;
+  font-weight: bolder;
+  color: $red;
 }

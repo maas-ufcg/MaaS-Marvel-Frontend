@@ -1,11 +1,9 @@
 <md-toolbar class="menu">
-    <div class="leftGroup">
-        <img src="/assets/img/marvel_logo.svg" class="logo">
-        <div class="links">
-            <button class="link" md-button routerLink="/" >Home</button>
-            <button class="link" md-button routerLink="/favorites">Favorites</button>
-            <button class="link" md-button (click)="logout()">Logout</button>
-        </div>
+    <img src="/assets/img/marvel_logo.svg" class="logo">
+    <div class="links">
+        <button class="link" md-button routerLink="/" >Home</button>
+        <button class="link" md-button routerLink="/favorites">Favorites</button>
+        <button class="link" md-button (click)="logout()">Logout</button>
     </div>
     <app-search-bar></app-search-bar>
  </md-toolbar>
