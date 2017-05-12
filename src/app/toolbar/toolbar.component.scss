@@ -5,6 +5,10 @@
   position: absolute;
   top: 0;
 
+  @media (max-width: 600px) {
+    width: 140px;
+  }
+
 }
 
 md-toolbar {
@@ -22,3 +26,4 @@ md-toolbar {
     margin-left: 180px;
   }
 }
+

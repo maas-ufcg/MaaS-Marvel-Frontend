@@ -9,6 +9,7 @@ import { RestService } from "app/services/rest.service";
 export class HeroCardsComponent implements OnInit {
 
   @Input() heroesList: any[];
+  @Input() title: string;
 
   private default_resolution = '/standard_fantastic.';
   imagesOnly = true;
@@ -16,6 +17,7 @@ export class HeroCardsComponent implements OnInit {
     private service: RestService
   ) {
     this.heroesList = [];
+    this.title = "Heroes";
    }
 
   ngOnInit() { }

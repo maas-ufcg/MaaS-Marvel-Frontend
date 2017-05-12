@@ -5,7 +5,7 @@
         <md-card-content>
           <p class="details-text"><strong>ID:</strong> {{hero.id}}</p>
           <p class="details-text"><strong>Name:</strong> {{hero.name}}</p>
-          <p class="details-text"><strong>Description:</strong> {{hero.description}}</p>
+          <p class="details-text" *ngIf="hero.description"><strong>Description:</strong> {{hero.description}}</p>
         </md-card-content>
       </md-card>
    </div>
