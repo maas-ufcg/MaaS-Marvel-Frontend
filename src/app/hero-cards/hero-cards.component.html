@@ -1,8 +1,13 @@
-<md-grid-list cols="4">
+<div class="header">
+  <div class="title">
+    {{ title }}
+  </div>
   <md-slide-toggle class="images-only-toggler" [(ngModel)]="imagesOnly">
-        Images only
+      Images only
   </md-slide-toggle>
-  <md-grid-tile *ngFor="let hero of heroes">
+</div>
+<div class="cards">
+  <div class="tile" *ngFor="let hero of heroes">
     <md-card class="hero-card">
       <!--<img md-card-image src="http://x.annihil.us/u/prod/marvel/i/mg/3/40/4bb4680432f73/standard_fantastic.jpg" />-->
       <a class="collection-item" [routerLink]="['/hero', hero.id]">
@@ -17,5 +22,5 @@
         </a>
       </md-card-title>
     </md-card>
-  </md-grid-tile>
-</md-grid-list>
+  </div>
+</div>

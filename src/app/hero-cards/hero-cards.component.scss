@@ -1,10 +1,5 @@
 @import "../../defaults";
 
-.hero-card {
-  width: 18em;
-  text-align: left;
-}
-
 a {
   text-decoration: none;
   font-size: 0.8rem;
@@ -13,9 +8,58 @@ a {
   font-weight: bolder;
 }
 
-.images-only-toggler {
+
+.header {
+  padding: 20px 0 20px 20px;
   color: $white;
-  margin: 5px;
-  text-transform: uppercase;
-  font-weight: bolder;
+
+  .title {
+    text-transform: uppercase;
+    font-weight: bolder;
+    float: left;
+    font-size: 1.3rem;
+  }
+
+  .images-only-toggler {
+    float: right;
+    color: $white;
+    margin: 5px;
+    text-transform: uppercase;
+    font-weight: bolder;
+  }
+}
+
+.cards {
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: row;
+  width: 100vw;
+
+  .tile {
+    text-align: left;
+
+    @media screen and (max-width: 544px) {
+      width: 100%;
+    }
+
+    @media screen and (min-width: 544px) {
+      width: 50%;
+    }
+
+    @media screen and (min-width: 728px) {
+      width: 50%;
+    }
+
+    @media screen and (min-width: 1024px) {
+      width: 33.3%;
+    }
+
+    @media screen and (min-width: 1366px) {
+      width: 25%;
+    }
+
+    md-card {
+      margin-top: 10px;
+    }
+  }
 }
