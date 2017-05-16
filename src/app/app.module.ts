@@ -45,7 +45,7 @@ import { ChatComponent } from './chat/chat.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     BrowserAnimationsModule,
     AppRoutingModule
   ],

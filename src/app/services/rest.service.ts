@@ -10,11 +10,11 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class RestService {
   private heroes = [];
+  private favorites = [];
 
   constructor(
     private http: Http, private authenticationService: AuthenticationService
   ) { }
-
 
   getHeroes(): Promise<any[]> {
     return this.http.get(API_BASE_URL + "/heroes", this.options)
@@ -49,27 +49,17 @@ export class RestService {
       .map(res => {
         if (res.status === 200) {
           let favoriteIds = res.json().favorites;
-          
           favoriteIds.forEach(id => {
-            let hero = this.heroes.find((hero) => {
-              return hero.id === id;
+            this.getHero(id).then(hero => {
+              hero.favorite = true;
+              this.favorites.push(hero);
             });
-            
-            hero.favorite = true;
+            return this.favorites;
           });
-          
-          return this.favorites;
         }
-
       }).catch((err: any, caugth) => {
         throw new Error(err.json().message);
       }).toPromise();
-  }
-
-  get favorites() {
-    return this.heroes.filter((hero) => {
-      return hero.favorite;
-    });
   }
 
   get options() {
@@ -90,6 +80,15 @@ export class RestService {
 
   search(name: string): Promise<any[]> {
     return this.http.get(API_BASE_URL + "/heroes/search/params?name=" + name, this.options)
+      .map((res) => {
+        return res.json().result;
+      }).catch((err: any, caught) => {
+        throw new Error(err.json().message)
+      }).toPromise();
+  }
+
+  getRecomendations(id, name): Promise<any[]> {
+    return this.http.get(API_BASE_URL + "/heroes/recommendation/params?name=" + name + "&&id=" + id, this.options)
       .map((res) => {
         return res.json().result;
       }).catch((err: any, caught) => {

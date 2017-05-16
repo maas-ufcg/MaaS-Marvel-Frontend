@@ -1,15 +1,29 @@
 <div class="container">
-   <div class="tile">
-      <md-card class="details-card">
-        <img md-card-image [src]="getHeroImage()"/>
-        <md-card-content>
-          <p class="details-text"><strong>ID:</strong> {{hero.id}}</p>
-          <p class="details-text"><strong>Name:</strong> {{hero.name}}</p>
-          <p class="details-text" *ngIf="hero.description"><strong>Description:</strong> {{hero.description}}</p>
-        </md-card-content>
+  <div class="tile">
+    <md-card class="details-card">
+      <img md-card-image [src]="getHeroImage(hero)" />
+      <md-card-content>
+        <p class="details-text"><strong>ID:</strong> {{hero.id}}</p>
+        <p class="details-text"><strong>Name:</strong> {{hero.name}}</p>
+        <p class="details-text" *ngIf="hero.description"><strong>Description:</strong> {{hero.description}}</p>
+      </md-card-content>
+    </md-card>
+  </div>
+  <div class="tile">
+    <h1 style="color:white">Look These</h1>
+    <div class="tile" *ngFor="let rec of recomendations">
+      <md-card class="hero-card">
+        <a class="collection-item" [routerLink]="['/hero', rec.id]">
+          <img md-card-image [src]="getHeroImage(rec)" />
+        </a>
+        <md-card-title>
+          <a class="collection-item" [routerLink]="['/hero', rec.id]">
+            <span>{{rec.name}}</span>
+          </a>
+        </md-card-title>
       </md-card>
-   </div>
-   <div class="tile">
+    </div>
+    <div>
       <app-chat [hero]="hero" #chatComponent></app-chat>
-   </div>
-</div>
+    </div>
+  </div>

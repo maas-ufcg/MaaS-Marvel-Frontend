@@ -14,6 +14,7 @@ export class HeroDetailsComponent implements OnInit, OnDestroy {
   hero;
   id;
   subscription: Subscription;
+  recomendations: any[];
 
   private default_resolution = '/standard_fantastic.';
 
@@ -21,27 +22,33 @@ export class HeroDetailsComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private restService: RestService,
     private router: Router
-  ) { 
+  ) {
     this.hero = {};
   }
 
-  getHeroImage() {
-    if(this.hero.thumbnail){
-      return this.hero.thumbnail.path + this.default_resolution + this.hero.thumbnail.extension;
+  getHeroImage(hero) {
+    if (hero.thumbnail) {
+      return hero.thumbnail.path + this.default_resolution + hero.thumbnail.extension;
     }
+  }
+
+  getRecomendation() {
+    this.restService.getRecomendations(this.hero.id, this.hero.name).then(heroes => {
+      this.recomendations = heroes;
+      console.log(this.recomendations);
+    });
   }
 
   ngOnInit() {
     this.subscription = this.route.params.subscribe(
       (params: any) => {
         this.id = params['id'];
-        console.log(this.id)
         this.restService.getHero(this.id).then(res => {
           if (!res) {
             this.router.navigate(['notFound'])
           }
           this.hero = res;
-          console.log(this.hero)
+          this.getRecomendation();
         })
       }
     );

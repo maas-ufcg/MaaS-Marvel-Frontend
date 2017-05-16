@@ -28,5 +28,42 @@
     }
 }
 
+.cards {
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: row;
+  width: 10vw;
+
+  .tile {
+    text-align: left;
+
+    @media screen and (max-width: 544px) {
+      width: 100%;
+    }
+
+    @media screen and (min-width: 544px) {
+      width: 50%;
+    }
+
+    @media screen and (min-width: 728px) {
+      width: 50%;
+    }
+
+    @media screen and (min-width: 1024px) {
+      width: 33.3%;
+    }
+
+    @media screen and (min-width: 1366px) {
+      width: 25%;
+    }
+
+    md-card {
+      width: 100px;
+      margin-top: 10px;
+      text-align: left;
+    }
+  }
+}
+
 
 
