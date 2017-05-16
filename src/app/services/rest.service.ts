@@ -89,7 +89,7 @@ export class RestService {
   }
 
   search(name: string): Promise<any[]> {
-    return this.http.get(API_BASE_URL + "/heroes/search/params?name=" + name, this.options)
+    return this.http.get(API_BASE_URL + "/heroes/search?name=" + name, this.options)
       .map((res) => {
         return res.json().result;
       }).catch((err: any, caught) => {
