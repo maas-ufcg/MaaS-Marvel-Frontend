@@ -28,11 +28,12 @@
     }
 }
 
+
 .cards {
   display: flex;
   flex-flow: wrap;
   flex-direction: row;
-  width: 10vw;
+  width: 100vw;
 
   .tile {
     text-align: left;
@@ -58,12 +59,12 @@
     }
 
     md-card {
-      width: 100px;
       margin-top: 10px;
       text-align: left;
     }
   }
 }
+
 
 
 
