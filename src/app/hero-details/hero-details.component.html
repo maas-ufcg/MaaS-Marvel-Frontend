@@ -12,18 +12,18 @@
   <div class="tile">
     <h1 style="color:white">Look These</h1>
     <div class="cards">
-    <div class="tile" *ngFor="let rec of recomendations">
-      <md-card class="example-card">
-        <a class="collection-item" [routerLink]="['/hero', rec.id]">
-          <img md-card-image [src]="getHeroImage(rec)" />
-        </a>
-        <md-card-title>
+      <div class="tile" *ngFor="let rec of recomendations">
+        <md-card class="example-card">
           <a class="collection-item" [routerLink]="['/hero', rec.id]">
-            <span>{{rec.name}}</span>
+            <img md-card-image [src]="getHeroImage(rec)" />
           </a>
-        </md-card-title>
-      </md-card>
-    </div>
+          <md-card-title>
+            <a class="collection-item" [routerLink]="['/hero', rec.id]">
+              <span>{{rec.name}}</span>
+            </a>
+          </md-card-title>
+        </md-card>
+      </div>
     </div>
     <div>
       <app-chat [hero]="hero" #chatComponent></app-chat>

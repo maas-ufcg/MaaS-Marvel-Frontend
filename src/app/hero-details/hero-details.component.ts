@@ -35,7 +35,6 @@ export class HeroDetailsComponent implements OnInit, OnDestroy {
   getRecomendation() {
     this.restService.getRecomendations(this.hero.id, this.hero.name).then(heroes => {
       this.recomendations = heroes;
-      console.log(this.recomendations);
     });
   }
 

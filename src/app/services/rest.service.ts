@@ -54,9 +54,9 @@ export class RestService {
               hero.favorite = true;
               this.favorites.push(hero);
             });
-            return this.favorites;
           });
         }
+        return this.favorites;
       }).catch((err: any, caugth) => {
         throw new Error(err.json().message);
       }).toPromise();
