@@ -11,22 +11,37 @@ import 'rxjs/add/operator/map';
 export class RestService {
   private heroes = [];
   private favorites = [];
+  private page = 0;
+  private isLoading = false;
 
   constructor(
     private http: Http, private authenticationService: AuthenticationService
   ) { }
 
+  getIsloading() : boolean {
+    return this.isLoading;
+  }
+
+  increasePage() {
+    this.page++;
+  }
+
   getHeroes(): Promise<any[]> {
-    return this.http.get(API_BASE_URL + "/heroes", this.options)
-      .map((res) => {
-        if (res.status == 200) {
-          this.heroes = <any[]>res.json();
-          this.getFavorites();
-          return this.heroes;
-        }
-      }).catch((err: any, caugth) => {
-        throw new Error(err.json().message);
-      }).toPromise();
+    if (!this.isLoading) {
+      this.isLoading = true;
+
+      return this.http.get(API_BASE_URL + "/heroes?page=" + this.page, this.options)
+        .map((res) => {
+          if (res.status == 200) {
+            this.heroes = <any[]>res.json();
+            this.getFavorites();
+            this.isLoading = false;
+            return this.heroes;
+          }
+        }).catch((err: any, caugth) => {
+          throw new Error(err.json().message);
+        }).toPromise();
+    }
   }
 
   favorite(heroId: string) {

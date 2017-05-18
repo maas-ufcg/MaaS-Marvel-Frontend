@@ -22,16 +22,29 @@ export class HeroCardsComponent implements OnInit {
 
   ngOnInit() { }
 
+  loadMore() {
+    var self = this;
+    if (!this.service.getIsloading()) {
+      this.service.increasePage();
+      var newHeroesPromise = this.service.getHeroes();
+      newHeroesPromise.then((response) => {
+        response.forEach(function (hero) {
+          self.heroesList.push(hero);
+        });
+      });
+    }
+  }
+
   favorite(hero){
     hero.favorite = !hero.favorite;
-    
+
     if(hero.favorite) {
       this.service.favorite(hero.id.toString()).then(() => {});
     } else {
-      this.service.unfavorite(hero.id.toString()).then(() => {}); 
+      this.service.unfavorite(hero.id.toString()).then(() => {});
     }
   }
- 
+
   getHeroImage(hero) {
     return hero.thumbnail.path + this.default_resolution + hero.thumbnail.extension;
   }

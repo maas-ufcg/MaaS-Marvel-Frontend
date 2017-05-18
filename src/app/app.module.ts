@@ -23,6 +23,7 @@ import { HeroDetailsComponent } from './hero-details/hero-details.component';
 import { HeroCardsComponent } from './hero-cards/hero-cards.component';
 import { RegisterComponent } from './connect/register/register.component';
 import { ChatComponent } from './chat/chat.component';
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ChatComponent } from './chat/chat.component';
     HttpModule,
     MaterialModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    InfiniteScrollModule
   ],
   providers: [
     AuthGuard,
