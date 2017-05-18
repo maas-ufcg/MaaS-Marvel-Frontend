@@ -22,6 +22,10 @@ export class RestService {
     return this.isLoading;
   }
 
+  resetPage() {
+    this.page = 0;
+  }
+
   increasePage() {
     this.page++;
   }

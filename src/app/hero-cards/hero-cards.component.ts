@@ -10,17 +10,22 @@ export class HeroCardsComponent implements OnInit {
 
   @Input() heroesList: any[];
   @Input() title: string;
+  @Input() infiniteHeroes;
 
   private default_resolution = '/standard_fantastic.';
   imagesOnly = true;
+
   constructor(
     private service: RestService
   ) {
     this.heroesList = [];
     this.title = "Heroes";
+    this.service.resetPage();
+    this.infiniteHeroes = true;
    }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   loadMore() {
     var self = this;
