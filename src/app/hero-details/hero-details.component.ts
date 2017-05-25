@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 
 import { RestService } from "app/services/rest.service";
 
+/** Hero Details Component */
 @Component({
   selector: 'app-hero-details',
   templateUrl: './hero-details.component.html',
@@ -18,6 +19,12 @@ export class HeroDetailsComponent implements OnInit, OnDestroy {
 
   private default_resolution = '/standard_fantastic.';
 
+  /**
+   * Constructor
+   * @param route {ActivatedRoute} Route associated with this component. 
+   * @param restService {RestService} Rest service.
+   * @param router {Router} Navigation and url manipulation provider.
+   */
   constructor(
     private route: ActivatedRoute,
     private restService: RestService,
@@ -26,12 +33,14 @@ export class HeroDetailsComponent implements OnInit, OnDestroy {
     this.hero = {};
   }
 
+  /**Return the image of the selected hero */
   getHeroImage(hero) {
     if (hero.thumbnail) {
       return hero.thumbnail.path + this.default_resolution + hero.thumbnail.extension;
     }
   }
 
+  /**Return a list of heroes to recommend for the user */
   getRecomendation() {
     this.restService.getRecomendations(this.hero.id, this.hero.name).then(heroes => {
       this.recomendations = heroes;

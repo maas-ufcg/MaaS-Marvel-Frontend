@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserInfo } from '../../models/user-info';
 import { UserService } from '../../services/user.service';
 
+/**Register Component */
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -12,16 +13,21 @@ export class RegisterComponent implements OnInit {
 
   private userInfo: UserInfo;
   private error: string;
-  
-  userForm;
 
+  /**
+   * Constructor. 
+   * @param userService {UserService} User service. 
+   * @param router {Router} Navigation and url manipulation provider.
+   */  
   constructor(private userService: UserService, private router: Router) { 
     this.userInfo = new UserInfo();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
+  /**
+   * Register a new user on the system.
+   */
   register() {
     console.log(this.userInfo);
     this.userService.register(this.userInfo).then(res => {

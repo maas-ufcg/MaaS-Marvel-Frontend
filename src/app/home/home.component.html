@@ -2,5 +2,5 @@
     <div *ngIf="errorMessage" class="error-message">
         {{ this.errorMessage }}
     </div>
-    <app-hero-cards *ngIf="heroes.length > 0" [heroesList]="heroes"></app-hero-cards>
+    <app-hero-cards *ngIf="heroes.length > 0" [heroesList]="heroes"  [infiniteHeroes]="!searchHeroes"></app-hero-cards>
 </div>

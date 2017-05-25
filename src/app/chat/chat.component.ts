@@ -5,6 +5,7 @@ import { CHAT_SERVER_URL } from '../../config/config';
 import { Message } from '../models/message';
 import { Name } from '../models/name';
 
+/** Chat Component */
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',

@@ -5,17 +5,26 @@ import { MdDialog } from '@angular/material';
 
 import { RestService } from 'app/services/rest.service';
 
+/** Home Component */
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
+  /**Heroes list */
   heroes: Array<any>;
+  /**Hero name */
   name: string;
   subscription: Subscription;
   errorMessage: String;
+  searchHeroes:boolean = false;
 
+  /**
+   * Constructor
+   * @param restService {RestService} Rest Service
+   * @param route {ActivatedRoute} Route associated with this component.
+   */
   constructor(
     private restService: RestService,
     private route: ActivatedRoute,
@@ -37,10 +46,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  /** Show the heroes cards */
   exibition() {
     this.errorMessage = null;
-    
     if (this.name && this.name != '') {
+      this.searchHeroes = true;
       this.restService.search(this.name).then(res => {
         if (res.length != 0) {
           this.heroes = res;
@@ -49,6 +59,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         }
       });
     } else {
+      this.searchHeroes = false;
       this.restService.getHeroes().then(res => {
         this.heroes = res;
       });
@@ -56,6 +67,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 }
 
+/** Hero Not Found Componetn */
 @Component({
   selector: 'search-not-found-dialog',
   template: `<h4>Hero Not Found...</h4>`,

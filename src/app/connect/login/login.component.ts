@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { UserCredentials } from '../../models/user-credentials';
 import { AuthenticationService } from '../../services/authentication.service';
 
+/**
+ * Login Component
+ */
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,6 +16,11 @@ export class LoginComponent implements OnInit {
   private userCredentials: UserCredentials;
   private error: string;
 
+  /**
+   * Constructor.
+   * @param authenticationService {AuthenticationService} Athentication Service
+   * @param router {Router} Navigation and url manipulation provider.
+   */
   constructor(private authenticationService: AuthenticationService, private router: Router) {
     this.userCredentials = new UserCredentials();
    }
@@ -23,6 +31,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  /**Make the user login */
   login() {
     this.authenticationService.login(this.userCredentials).then(res => {
       if(res.success) {
