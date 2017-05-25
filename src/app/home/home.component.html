@@ -1,1 +1,6 @@
-<app-hero-cards [heroesList]="heroes"></app-hero-cards>
+<div class="content">
+    <div *ngIf="errorMessage" class="error-message">
+        {{ this.errorMessage }}
+    </div>
+    <app-hero-cards *ngIf="heroes.length > 0" [heroesList]="heroes"></app-hero-cards>
+</div>

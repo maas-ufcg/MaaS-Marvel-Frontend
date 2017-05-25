@@ -14,11 +14,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   heroes: Array<any>;
   name: string;
   subscription: Subscription;
+  errorMessage: String;
 
   constructor(
     private restService: RestService,
     private route: ActivatedRoute,
-    public dialog: MdDialog
   ) {
     this.heroes = [];
    }
@@ -38,12 +38,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   exibition() {
+    this.errorMessage = null;
+    
     if (this.name && this.name != '') {
       this.restService.search(this.name).then(res => {
         if (res.length != 0) {
           this.heroes = res;
         } else {
-          this.openDialog();
+          this.errorMessage = "No heroes match your search.";
         }
       });
     } else {
@@ -51,10 +53,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.heroes = res;
       });
     }
-  }
-
-  openDialog() {
-    this.dialog.open(SearchNotFoundDialog);
   }
 }
 

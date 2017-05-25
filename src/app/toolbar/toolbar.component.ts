@@ -24,6 +24,10 @@ export class ToolbarComponent implements OnInit {
     this.authenticationService.logout();
   }
 
+  get authenticatedUser() {
+    return this.authenticationService.authenticatedUser;
+  }
+
     /**
    * Navigate to the specific URI.
    * @param uri URI

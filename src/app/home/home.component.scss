@@ -1,0 +1,10 @@
+@import "../../defaults";
+
+.content {
+    .error-message {
+        margin: 20px;
+        padding: 20px;
+        background: $red; 
+        color: $white;
+    }
+}

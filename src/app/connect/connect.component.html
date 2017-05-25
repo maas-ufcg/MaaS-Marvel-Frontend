@@ -2,5 +2,5 @@
   <img md-card-image src="/assets/img/marvel_logo.svg" width="100%">
   <app-login *ngIf="!register"></app-login>
   <app-register *ngIf="register"></app-register>
-  <button class="connect-button" (click)="switchForm()">{{ register? 'Sign in': 'Sign up'}}</button>
+  <button class="connect-button" (click)="switchForm()">{{ register? 'back': 'Sign up'}}</button>
 </md-card>
