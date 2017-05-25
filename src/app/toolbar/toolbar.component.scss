@@ -24,8 +24,16 @@ md-toolbar {
 
   .links {
     margin-left: 180px;
+    margin-right: -180px;
+  }
+
+  .user-info {
+    text-transform: uppercase;
+    font-size: 1rem;
   }
   
 }
 
-
+.selected {
+  background-color: #e91e63;
+}

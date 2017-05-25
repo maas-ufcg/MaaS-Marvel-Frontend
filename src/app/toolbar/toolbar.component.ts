@@ -8,6 +8,7 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
+  currentButton = 1;
 
   constructor(
     private router: Router,
@@ -21,6 +22,10 @@ export class ToolbarComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout();
+  }
+
+  get authenticatedUser() {
+    return this.authenticationService.authenticatedUser;
   }
 
     /**

@@ -1,2 +1,4 @@
 <input placeholder="Search for a hero..." [(ngModel)]="name" (keyup.enter)="search()">
-
+<button (click)="search()" class="search-button">
+    <md-icon>search</md-icon>
+</button>
