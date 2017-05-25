@@ -1,20 +1,28 @@
-<form (ngSubmit)="register()">
+<form (ngSubmit)="register()" #userForm="ngForm">
   <md-input-container>
-    <input mdInput placeholder="First name" [(ngModel)]="userInfo.name.firstName" name="firstName">
+    <input mdInput id="firstName" type="text" placeholder="First name" [(ngModel)]="userInfo.name.firstName" name="firstName"
+      required>
   </md-input-container>
   <md-input-container>
-    <input mdInput placeholder="Last name" [(ngModel)]="userInfo.name.lastName" name="lastName">
+    <input mdInput type="text" placeholder="Last name" [(ngModel)]="userInfo.name.lastName" name="lastName" required>
   </md-input-container>
   <md-input-container>
-    <input mdInput placeholder="Email" [(ngModel)]="userInfo.email" name="email" type="email">
+    <input mdInput type="email" placeholder="Email" [(ngModel)]="userInfo.email" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+      type="email" required>
   </md-input-container>
   <md-input-container>
-    <input mdInput placeholder="Password" type="password" [(ngModel)]="userInfo.password" name="password">
+    <input mdInput placeholder="Password" type="password" [(ngModel)]="userInfo.password" name="password" required>
   </md-input-container>
+
   <div class="error" *ngIf="error">
     {{ error }}
   </div>
+
+  <div class="error" *ngIf="!userForm.form.valid && (userForm.form.dirty && userForm.form.touched)">
+    Complete all the fields correctly
+  </div>
+
   <div class="button-row">
-    <button class="connect-button" type="submit" [disabled]="!userInfo.valid()">Register</button>
+    <button class="connect-button" type="submit" [disabled]="!userForm.form.valid">Register</button>
   </div>
 </form>

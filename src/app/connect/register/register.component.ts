@@ -12,6 +12,8 @@ export class RegisterComponent implements OnInit {
 
   private userInfo: UserInfo;
   private error: string;
+  
+  userForm;
 
   constructor(private userService: UserService, private router: Router) { 
     this.userInfo = new UserInfo();
@@ -21,6 +23,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    console.log(this.userInfo);
     this.userService.register(this.userInfo).then(res => {
       if(res.success) {
         this.router.navigate(['/home']);
