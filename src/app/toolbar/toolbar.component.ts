@@ -9,6 +9,7 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
+  currentButton = 1;
 
   /**
    * COnstructor.

@@ -1,8 +1,8 @@
 <md-toolbar class="menu">
     <img src="/assets/img/marvel_logo.svg" class="logo">
     <div class="links">
-        <button class="link" md-button routerLink="/" >Home</button>
-        <button class="link" md-button routerLink="/favorites">Favorites</button>
+        <button class="link" [ngClass]="currentButton == 1 ? 'selected': ''" (click)="currentButton = 1" md-button routerLink="/" >Home</button>
+        <button class="link" [ngClass]="currentButton == 2 ? 'selected': ''" (click)="currentButton = 2" md-button routerLink="/favorites">Favorites</button>
     </div>
     <app-search-bar></app-search-bar>
     <div class="user-info">
